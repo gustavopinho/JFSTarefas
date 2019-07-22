@@ -3,12 +3,9 @@ package beans;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 import modelo.Usuario;
 
@@ -76,7 +73,7 @@ public class Cadastro {
 	/**
 	 * Faz o cadastro de novos usuários
 	 */
-	public void cadastrar()
+	public String cadastrar()
 	{
 
 		if(this.validaDados())
@@ -90,8 +87,11 @@ public class Cadastro {
 			entityTransaction.commit();
 			this.usuario = new Usuario();
 			this.setMensagem("Usuário cadastrado com sucesso!");
+			
+			return "login.xhtml?faces-redirect=true?faces-redirect=true";
 		}
 		
+		return null;
 	}
 	
 	/**

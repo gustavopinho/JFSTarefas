@@ -25,9 +25,6 @@ public class Usuario implements Serializable {
 	private String nome;
 	
 	private Collection<Tarefas> tarefas;
-	
-	private Collection<Tarefas> tarefasPendentes;
-	private Collection<Tarefas> tarefasFinalizadas;
 
 	public Usuario() {
 		super();
@@ -76,23 +73,6 @@ public class Usuario implements Serializable {
 
 	public void setTarefas(Collection<Tarefas> tarefas) {
 		this.tarefas = tarefas;
-	}
-
-	@OneToMany(mappedBy = "usuario")
-	public Collection<Tarefas> getTarefasPendentes() {
-		return tarefasPendentes;
-	}
-
-	public void setTarefasPendentes(Collection<Tarefas> tarefasPendentes) {
-		this.tarefasPendentes = tarefasPendentes;
-	}
-
-	public Collection<Tarefas> getTarefasFinalizadas() {
-		return tarefasFinalizadas;
-	}
-
-	public void setTarefasFinalizadas(Collection<Tarefas> tarefasFinalizadas) {
-		this.tarefasFinalizadas = tarefasFinalizadas;
 	}
 }
 
