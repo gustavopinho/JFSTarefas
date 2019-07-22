@@ -52,7 +52,7 @@ public class Login {
         this.mensagem = mensagem;
     }
 
-    // Realiza o login do usu�rio no sistema e salva o usu�rio logado na sess�o.
+    // Realiza o login do usuário no sistema e salva o usuário logado na sessão.
     public String fazerLogin()
     {
         this.entityUsuario = (Usuario) entityManager.createNamedQuery("Usuario.buscaPorUsuarioSenha")
@@ -67,12 +67,12 @@ public class Login {
             
             return "dashboard.xhtml?faces-redirect=true";
         } else {
-            this.setMensagem("Usu�rio ou senha incorretos!");
+            this.setMensagem("Usuário ou senha incorretos!");
             return null;
         }
     }
 
-    // Faz logout do usu�rio e exclu� do usu�rio da sess�o.
+    // Faz logout do usuário e excluí do usuário da sessão.
     public String fazerLogout()
     {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();

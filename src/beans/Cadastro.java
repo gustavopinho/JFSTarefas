@@ -51,36 +51,36 @@ public class Cadastro {
         this.confirmaSenha = confirmaSenha;
     }
 
-    // M�todo respons�vel pelo cadastro de novos usu�rios.
+    // Método responsável pelo cadastro de novos usuários.
     public String cadastrar()
     {
-        // Verifica a valida��o
+        // Verifica a validação
         if(this.validaDados())
         {
-            // Verifica se existe transa��o ativa, se n�o inicia.
+            // Verifica se existe transação ativa, se não inicia.
             if(!entityTransaction.isActive())
             {
                 entityTransaction.begin();
             }
 
-            // Salva os dados do usu�rio cadastrado.
+            // Salva os dados do usuário cadastrado.
             entityManager.persist(this.usuario);
 
-            // Faz o commit da transa��o
+            // Faz o commit da transação
             entityTransaction.commit();
             
-            // Limpa o usu�rio.
+            // Limpa o usuário.
             this.usuario = new Usuario();
-            this.setMensagem("Usu�rio cadastrado com sucesso!");
+            this.setMensagem("usuário cadastrado com sucesso!");
             
-            // Redireciona o usu�rio cadastrado para login.
+            // Redireciona o usuário cadastrado para login.
             return "login.xhtml?faces-redirect=true?faces-redirect=true";
         }
 
         return null;
     }
     
-    // M�todo respons�vel pela valida��o dos dados enviados pelo usu�rio para o cadastro.
+    // Método responsável pelavalidação dos dados enviados pelo usuário para o cadastro.
     public boolean validaDados()
     {
         // Verifica se as senha informadas coincidem.
