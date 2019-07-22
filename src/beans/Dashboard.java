@@ -81,6 +81,14 @@ public class Dashboard {
 	public void setLimite(Date limite) {
 		this.limite = limite;
 	}
+	
+	public String getMensagem() {
+		return mensagem;
+	}
+
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
+	}
 
 	/**
 	 * Adiciona ou atualiza uma tarefa
@@ -162,10 +170,16 @@ public class Dashboard {
 			entityTransaction.begin();
 		}
 		
+		tarefa = entityManager.merge(tarefa);
+		
 		entityManager.persist(tarefa);
 		entityTransaction.commit();
 	}
 	
+	/**
+	 * Faz a validação dos das enviados. Não implementado
+	 * @return
+	 */
 	public Boolean validaTarefa()
 	{
 		return true;
@@ -179,12 +193,23 @@ public class Dashboard {
 		this.setTarefaId(0);
 	}
 
-	public String getMensagem() {
-		return mensagem;
-	}
-
-	public void setMensagem(String mensagem) {
-		this.mensagem = mensagem;
+	
+	
+	/**
+	 * Busca as tarefas do usuário de acordo com o status de finalizada
+	 * @param situacao
+	 * @return
+	 */
+	public Collection<Tarefas> getTarefas(Boolean status)
+	{
+		Collection<Tarefas> tarefasPendentes = entityManager.createQuery(
+			    "select t " +
+			    "from Tarefas t " +
+			    "where t.usuario = :usuario and t.finalizada = :finalizada", Tarefas.class)
+			.setParameter( "usuario", this.usuario)
+			.setParameter( "finalizada", status)
+			.getResultList();
+		return tarefasPendentes;
 	}
 	
 }

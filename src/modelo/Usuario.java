@@ -23,7 +23,11 @@ public class Usuario implements Serializable {
 	private String usuario;
 	private String senha;
 	private String nome;
+	
 	private Collection<Tarefas> tarefas;
+	
+	private Collection<Tarefas> tarefasPendentes;
+	private Collection<Tarefas> tarefasFinalizadas;
 
 	public Usuario() {
 		super();
@@ -65,12 +69,30 @@ public class Usuario implements Serializable {
 	}
 
 	@OneToMany(mappedBy = "usuario")
+	@OrderBy("limite ASC")
 	public Collection<Tarefas> getTarefas() {
 		return tarefas;
 	}
 
 	public void setTarefas(Collection<Tarefas> tarefas) {
 		this.tarefas = tarefas;
+	}
+
+	@OneToMany(mappedBy = "usuario")
+	public Collection<Tarefas> getTarefasPendentes() {
+		return tarefasPendentes;
+	}
+
+	public void setTarefasPendentes(Collection<Tarefas> tarefasPendentes) {
+		this.tarefasPendentes = tarefasPendentes;
+	}
+
+	public Collection<Tarefas> getTarefasFinalizadas() {
+		return tarefasFinalizadas;
+	}
+
+	public void setTarefasFinalizadas(Collection<Tarefas> tarefasFinalizadas) {
+		this.tarefasFinalizadas = tarefasFinalizadas;
 	}
 }
 

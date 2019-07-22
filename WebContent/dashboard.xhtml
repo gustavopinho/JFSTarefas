@@ -31,9 +31,39 @@
 		<br/>
 		<h:commandButton action="#{dashboard.adicionarTarefa()}" value="Submit"></h:commandButton>
 	</h:form>
-	<h2>Minhas Tarefas</h2>
+	<h2>Tarefas Pendentes</h2>
 	<h:form>
-		<h:dataTable value="#{dashboard.usuario.tarefas}" var="t">
+		<h:dataTable value="#{dashboard.getTarefas(false)}" var="t">
+			<h:column>
+				<f:facet name="header">ID:</f:facet>
+				#{t.id}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Descrição:</f:facet>
+				#{t.descricao}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Prazo para entrega:</f:facet>
+				#{t.limite}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Criada em:</f:facet>
+				#{t.cadastro}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Ações</f:facet>
+				<h:commandButton value = "Concluír" action = "#{dashboard.marcaConcluida(t)}">
+	            </h:commandButton>
+				<h:commandButton value = "Editar" action = "#{dashboard.editarTarefa(t)}">
+	            </h:commandButton>
+	            <h:commandButton value = "Excluir" action = "#{dashboard.removeTarefa(t)}">
+	            	 <!-- p:confirm header="Confirmação" message="Deseja excluír essa tarefa?" /-->
+	            </h:commandButton>
+			</h:column>
+		</h:dataTable>
+		
+		<h2>Tarefas Finalizadas</h2>
+		<h:dataTable value="#{dashboard.getTarefas(true)}" var="t">
 			<h:column>
 				<f:facet name="header">ID:</f:facet>
 				#{t.id}
@@ -55,17 +85,8 @@
 				#{t.entrega}
 			</h:column>
 			<h:column>
-				<f:facet name="header">Status</f:facet>
-				#{t.finalizada}
-			</h:column>
-			<h:column>
 				<f:facet name="header">Ações</f:facet>
-				<h:commandButton value = "Concluír" action = "#{dashboard.marcaConcluida(t)}">
-	            </h:commandButton>
-				<h:commandButton value = "Editar" action = "#{dashboard.editarTarefa(t)}">
-	            </h:commandButton>
-	            <h:commandButton value = "Excluir" action = "#{dashboard.removeTarefa(t)}">
-	            	 <!-- p:confirm header="Confirmação" message="Deseja excluír essa tarefa?" /-->
+				<h:commandButton value = "Excluir" action = "#{dashboard.removeTarefa(t)}">
 	            </h:commandButton>
 			</h:column>
 		</h:dataTable>
