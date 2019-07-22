@@ -8,61 +8,61 @@
         <title>Cadastrar | Tarefas App</title>
     </h:head>
     <h:body>
-    	<ui:composition template="/template.xhtml">
-    		 <ui:define name="content">
-    		 	<div class="panel login">
-  					<p class="panel-heading has-text-centered">
-				    	<b>CADASTRE-SE</b>
-				  	</p>
-				  	<div class="panel-block">
-				  		#{cadastro.mensagem}
-					</div>
-					<h:form  id="formLogin">
-	  					<div class="panel-block">
-	  						<div class="field">
-		  						<h:outputLabel for="nome" class="label">Nome:</h:outputLabel>
-		  						<div class="control">
-				            		<h:inputText class="input" id="nome" value="#{cadastro.usuario.nome}" />
-				            	</div>
-			            	</div>
-	  					</div>
-	  					
-	  					<div class="panel-block">
-	  						<div class="field">
-		  						<h:outputLabel for="usuario" class="label">Usuário:</h:outputLabel>
-		  						<div class="control">
-				            		<h:inputText class="input" id="usuario" value="#{cadastro.usuario.usuario}" />
-				            	</div>
-			            	</div>
-	  					</div>
-	  					
-	  					<div class="panel-block">
-	  						<div class="field">
-		  						<h:outputLabel for="senha" class="label">Senha:</h:outputLabel>
-		  						<div class="control">
-				            		<h:inputSecret class="input" id="senha" value="#{cadastro.usuario.senha}" maxlength="6" required="true" redisplay="true" ></h:inputSecret>
-				            	</div>
-			            	</div>
-	  					</div>
-	  					
-	  					<div class="panel-block">
-	  						<div class="field">
-		  						 <h:outputLabel for="confirmaSenha" class="label">Confirmar Senha:</h:outputLabel>
-		  						<div class="control">
-           							<h:inputSecret class="input" id="confirmaSenha" value="#{cadastro.confirmaSenha}" maxlength="6" required="true" redisplay="true" ></h:inputSecret>
-				            	</div>
-			            	</div>
-	  					</div>
-	  					
-  						<div class="panel-block">
-	  						<h:commandButton class="button is-primary is-fullwidth" action="#{cadastro.cadastrar()}" value="Cadastrar"></h:commandButton>
-	  					</div>
-	  					<div class="panel-block">
-	  						<h:link class="button is-info is-fullwidth" value = "Login" outcome = "/login.xhtm" />
-	  					</div>
-		  			</h:form>
-		  		</div>
-    		</ui:define>
-		</ui:composition>
-	</h:body>
+        <ui:composition template="/template.xhtml">
+             <ui:define name="content">
+                <div class="panel login">
+                    <p class="panel-heading has-text-centered">
+                        <b>CADASTRE-SE</b>
+                    </p>
+                    <div class="panel-block">
+                        #{cadastro.mensagem}
+                    </div>
+                    <h:form  id="formLogin">
+                        <div class="panel-block">
+                            <div class="field">
+                                <h:outputLabel for="nome" class="label">Nome:</h:outputLabel>
+                                <div class="control">
+                                    <h:inputText class="input" id="nome" value="#{cadastro.usuario.nome}" />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="panel-block">
+                            <div class="field">
+                                <h:outputLabel for="usuario" class="label">Usuário:</h:outputLabel>
+                                <div class="control">
+                                    <h:inputText class="input" id="usuario" value="#{cadastro.usuario.usuario}" />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="panel-block">
+                            <div class="field">
+                                <h:outputLabel for="senha" class="label">Senha:</h:outputLabel>
+                                <div class="control">
+                                    <h:inputSecret class="input" id="senha" value="#{cadastro.usuario.senha}" maxlength="6" required="true" redisplay="true" ></h:inputSecret>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="panel-block">
+                            <div class="field">
+                                 <h:outputLabel for="confirmaSenha" class="label">Confirmar Senha:</h:outputLabel>
+                                <div class="control">
+                                    <h:inputSecret class="input" id="confirmaSenha" value="#{cadastro.confirmaSenha}" maxlength="6" required="true" redisplay="true" ></h:inputSecret>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="panel-block">
+                            <h:commandButton class="button is-primary is-fullwidth" action="#{cadastro.cadastrar()}" value="Cadastrar"></h:commandButton>
+                        </div>
+                        <div class="panel-block">
+                            <h:link class="button is-info is-fullwidth" value = "Login" outcome = "/login.xhtm" />
+                        </div>
+                    </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
 </html>

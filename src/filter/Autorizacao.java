@@ -31,7 +31,7 @@ public class Autorizacao implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain) throws IOException, ServletException {
         
-    	Usuario usuario = null;
+        Usuario usuario = null;
         HttpSession sess = ((HttpServletRequest) request).getSession(false);
 
         // Verifica se a sessão não está vazia.

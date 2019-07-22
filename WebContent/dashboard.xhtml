@@ -10,113 +10,113 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" />
 </h:head> 
 <body>
-	<ui:composition template="/template.xhtml">
-    	<ui:define name="content">
-    		<div class="panel cadastrar">
- 				<p class="panel-heading has-text-centered">
-			    	<b>CADASTRAR TAREFA</b>
-			    	<h:form>
-				        <h:commandLink action="#{login.fazerLogout()}" value="Sair" />
-				    </h:form>
-			  	</p>
-			  	<div class="panel-block">
-			  		#{dashboard.mensagem}
-				</div>
-					<h:form>
-						<div class="panel-block">
-	  						<div class="field">
-		  						<h:outputLabel for="descricao" class="label">Descrição:</h:outputLabel>
-		  						<div class="control">
-				            		<h:inputText class="input" id="descricao" value="#{dashboard.descricao}" required="true" redisplay="true" />
-				            	</div>
-			            	</div>
-	  					</div>
-	  					
-	  					<div class="panel-block">
-	  						<div class="field">
-		  						<h:outputLabel for="limite" class="label">Limite para Entrega:</h:outputLabel>
-		  						<div class="control">
-				            		<h:inputText class="input" id="limite" value="#{dashboard.limite}" required="true" redisplay="true">
-							             <f:convertDateTime locale="pt,BR" pattern="dd/MM/yyyy" />
-							        </h:inputText>
-				            	</div>
-			            	</div>
-	  					</div>
-	  					
-	  					<div class="panel-block">
-	  						 <h:commandButton class="button is-primary is-fullwidth" action="#{dashboard.adicionarTarefa()}" value="Salvar"></h:commandButton>
-	  					</div>
-  					</h:form>
-  					<div class="panel-heading has-text-centered">
-  						<b>TAREFAS PENDENTES</b>
-  					</div>
-  					<h:form>
-	  					<div class="panel-block">
-	  						<h:dataTable value="#{dashboard.getTarefas(false)}" var="t" class="table">
-					            <h:column>
-					                <f:facet name="header">ID:</f:facet>
-					                #{t.id}
-					            </h:column>
-					            <h:column>
-					                <f:facet name="header">Descrição:</f:facet>
-					                #{t.descricao}
-					            </h:column>
-					            <h:column>
-					                <f:facet name="header">Prazo para entrega:</f:facet>
-					                #{t.limite}
-					            </h:column>
-					            <h:column>
-					                <f:facet name="header">Criada em:</f:facet>
-					                #{t.cadastro}
-					            </h:column>
-					            <h:column>
-					                <f:facet name="header">Ações</f:facet>
-					                <h:commandButton value = "Concluír" action = "#{dashboard.marcaConcluida(t)}">
-					                </h:commandButton>
-					                <h:commandButton value = "Editar" action = "#{dashboard.editarTarefa(t)}">
-					                </h:commandButton>
-					                <h:commandButton value = "Excluir" action = "#{dashboard.removeTarefa(t)}">
-					                </h:commandButton>
-					            </h:column>
-					        </h:dataTable>
-	  					</div>
-	  				</h:form>
-  					<div class="panel-heading has-text-centered">
-  						<b>TAREFAS CONCLUÍDAS</b>
-  					</div>
-  					<h:form>
-  					<div class="panel-block">
-  						<h:dataTable value="#{dashboard.getTarefas(true)}" var="t" class="table">
-				            <h:column>
-				                <f:facet name="header">ID:</f:facet>
-				                #{t.id}
-				            </h:column>
-				            <h:column>
-				                <f:facet name="header">Descrição:</f:facet>
-				                #{t.descricao}
-				            </h:column>
-				            <h:column>
-				                <f:facet name="header">Criada em:</f:facet>
-				                #{t.cadastro}
-				            </h:column>
-				            <h:column>
-				                <f:facet name="header">Prazo para entrega:</f:facet>
-				                #{t.limite}
-				            </h:column>
-				            <h:column>
-				                <f:facet name="header">Data Entrega:</f:facet>
-				                #{t.entrega}
-				            </h:column>
-				            <h:column>
-				                <f:facet name="header">Ações</f:facet>
-				                <h:commandButton value = "Excluir" action = "#{dashboard.removeTarefa(t)}">
-				                </h:commandButton>
-				            </h:column>
-				        </h:dataTable>
-  					</div>
-					</h:form>
-			</div>
-    	</ui:define>
+    <ui:composition template="/template.xhtml">
+        <ui:define name="content">
+            <div class="panel cadastrar">
+                <p class="panel-heading has-text-centered">
+                    <b>CADASTRAR TAREFA</b>
+                    <h:form>
+                        <h:commandLink action="#{login.fazerLogout()}" value="Sair" />
+                    </h:form>
+                </p>
+                <div class="panel-block">
+                    #{dashboard.mensagem}
+                </div>
+                    <h:form>
+                        <div class="panel-block">
+                            <div class="field">
+                                <h:outputLabel for="descricao" class="label">Descrição:</h:outputLabel>
+                                <div class="control">
+                                    <h:inputText class="input" id="descricao" value="#{dashboard.descricao}" required="true" redisplay="true" />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="panel-block">
+                            <div class="field">
+                                <h:outputLabel for="limite" class="label">Limite para Entrega:</h:outputLabel>
+                                <div class="control">
+                                    <h:inputText class="input" id="limite" value="#{dashboard.limite}" required="true" redisplay="true">
+                                         <f:convertDateTime locale="pt,BR" pattern="dd/MM/yyyy" />
+                                    </h:inputText>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="panel-block">
+                             <h:commandButton class="button is-primary is-fullwidth" action="#{dashboard.adicionarTarefa()}" value="Salvar"></h:commandButton>
+                        </div>
+                    </h:form>
+                    <div class="panel-heading has-text-centered">
+                        <b>TAREFAS PENDENTES</b>
+                    </div>
+                    <h:form>
+                        <div class="panel-block">
+                            <h:dataTable value="#{dashboard.getTarefas(false)}" var="t" class="table">
+                                <h:column>
+                                    <f:facet name="header">ID:</f:facet>
+                                    #{t.id}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Descrição:</f:facet>
+                                    #{t.descricao}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Prazo para entrega:</f:facet>
+                                    #{t.limite}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Criada em:</f:facet>
+                                    #{t.cadastro}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Ações</f:facet>
+                                    <h:commandButton value = "Concluír" action = "#{dashboard.marcaConcluida(t)}">
+                                    </h:commandButton>
+                                    <h:commandButton value = "Editar" action = "#{dashboard.editarTarefa(t)}">
+                                    </h:commandButton>
+                                    <h:commandButton value = "Excluir" action = "#{dashboard.removeTarefa(t)}">
+                                    </h:commandButton>
+                                </h:column>
+                            </h:dataTable>
+                        </div>
+                    </h:form>
+                    <div class="panel-heading has-text-centered">
+                        <b>TAREFAS CONCLUÍDAS</b>
+                    </div>
+                    <h:form>
+                    <div class="panel-block">
+                        <h:dataTable value="#{dashboard.getTarefas(true)}" var="t" class="table">
+                            <h:column>
+                                <f:facet name="header">ID:</f:facet>
+                                #{t.id}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Descrição:</f:facet>
+                                #{t.descricao}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Criada em:</f:facet>
+                                #{t.cadastro}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Prazo para entrega:</f:facet>
+                                #{t.limite}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Data Entrega:</f:facet>
+                                #{t.entrega}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Ações</f:facet>
+                                <h:commandButton value = "Excluir" action = "#{dashboard.removeTarefa(t)}">
+                                </h:commandButton>
+                            </h:column>
+                        </h:dataTable>
+                    </div>
+                    </h:form>
+            </div>
+        </ui:define>
     </ui:composition>
 </body> 
 </html>
