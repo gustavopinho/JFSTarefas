@@ -5,21 +5,44 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
     <h:head>
-        <title>Cadastrar | Tarefas App</title>
+        <title>Login | Tarefas App</title>
     </h:head>
     <h:body>
-        <h1>#{login.mensagem}</h1>
-        <h:form  id="formLogin">
-            <h:outputLabel for="usuario">Usuário:</h:outputLabel>
-            <h:inputText id="usuario" value="#{login.usuario}" />
-            <br/>
-            <h:outputLabel for="senha">Senha:</h:outputLabel>
-            <h:inputSecret id="senha" value="#{login.senha}" maxlength="6" required="true" redisplay="true" ></h:inputSecret>
-            <br/>
-            <h:commandButton action="#{login.fazerLogin()}" value="Submit"></h:commandButton>
-        </h:form>
-        <h:form>
-            <h:link value = "Cadastre-se" outcome = "/cadastro.xhtml" />
-        </h:form>
+    	<ui:composition template="/template.xhtml">
+    		 <ui:define name="content">
+    		 		<div class="panel login">
+	  					<p class="panel-heading has-text-centered">
+					    	<b>LOGIN</b>
+					  	</p>
+					  	<div class="panel-block">
+					  		#{login.mensagem}
+						</div>
+						<h:form  id="formLogin">
+		  					<div class="panel-block">
+		  						<div class="field">
+			  						<h:outputLabel for="usuario" class="label">Usuário:</h:outputLabel>
+			  						<div class="control">
+					            		<h:inputText class="input is-fullwidth" id="usuario" value="#{login.usuario}" />
+					            	</div>
+				            	</div>
+		  					</div>
+		  					<div class="panel-block">
+		  						<div class="field">
+		  							<h:outputLabel for="senha" class="label">Senha:</h:outputLabel>
+		  							<div class="control">
+				            			<h:inputSecret class="input is-fullwidth" id="senha" value="#{login.senha}" maxlength="6" required="true" redisplay="true" ></h:inputSecret>
+				            		</div>
+				            	</div>
+		  					</div>
+	  						<div class="panel-block">
+		  						<h:commandButton  class="button is-primary is-fullwidth" action="#{login.fazerLogin()}" value="Enviar"></h:commandButton>
+		  					</div>
+		  					<div class="panel-block">
+		  						<h:link class="button is-info is-fullwidth" value = "Cadastre-se" outcome = "/cadastro.xhtml" />
+		  					</div>
+		  				</h:form>
+		  			</div>
+	        </ui:define>
+    	</ui:composition>
     </h:body>
 </html>

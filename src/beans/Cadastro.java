@@ -13,7 +13,7 @@ import modelo.Usuario;
 @SessionScoped
 public class Cadastro {
     
-    private String mensagem = "Informe os dados do usuário";
+    private String mensagem = "Informe os dados do usuÃ¡rio!";
     private String confirmaSenha;
     private Usuario usuario;
     
@@ -51,42 +51,42 @@ public class Cadastro {
         this.confirmaSenha = confirmaSenha;
     }
 
-    // Método responsável pelo cadastro de novos usuários.
+    // Mï¿½todo responsï¿½vel pelo cadastro de novos usuï¿½rios.
     public String cadastrar()
     {
-        // Verifica a validação
+        // Verifica a validaï¿½ï¿½o
         if(this.validaDados())
         {
-            // Verifica se existe transação ativa, se não inicia.
+            // Verifica se existe transaï¿½ï¿½o ativa, se nï¿½o inicia.
             if(!entityTransaction.isActive())
             {
                 entityTransaction.begin();
             }
 
-            // Salva os dados do usuário cadastrado.
+            // Salva os dados do usuï¿½rio cadastrado.
             entityManager.persist(this.usuario);
 
-            // Faz o commit da transação
+            // Faz o commit da transaï¿½ï¿½o
             entityTransaction.commit();
             
-            // Limpa o usuário.
+            // Limpa o usuï¿½rio.
             this.usuario = new Usuario();
-            this.setMensagem("Usuário cadastrado com sucesso!");
+            this.setMensagem("Usuï¿½rio cadastrado com sucesso!");
             
-            // Redireciona o usuário cadastrado para login.
+            // Redireciona o usuï¿½rio cadastrado para login.
             return "login.xhtml?faces-redirect=true?faces-redirect=true";
         }
 
         return null;
     }
     
-    // Método responsável pela validação dos dados enviados pelo usuário para o cadastro.
+    // Mï¿½todo responsï¿½vel pela validaï¿½ï¿½o dos dados enviados pelo usuï¿½rio para o cadastro.
     public boolean validaDados()
     {
         // Verifica se as senha informadas coincidem.
         if(this.usuario.getSenha() != this.getConfirmaSenha())
         {
-            this.setMensagem("A senha e a confirmação não coincidem!");
+            this.setMensagem("A senha e a confirmaï¿½ï¿½o nï¿½o coincidem!");
             return false;
         }
         

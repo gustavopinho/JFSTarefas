@@ -31,13 +31,13 @@ public class Autorizacao implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain) throws IOException, ServletException {
         
-        Usuario usuario = null;
+    	Usuario usuario = null;
         HttpSession sess = ((HttpServletRequest) request).getSession(false);
 
         // Verifica se a sessão não está vazia.
         if (sess != null){
             // Busca o usuário salvo na sessão.
-            usuario = (User) sess.getAttribute("usuario");
+            usuario = (Usuario) sess.getAttribute("usuario");
         } 
 
         // Verifica se o usuário foi encontrado, se não, redireciona para o login.

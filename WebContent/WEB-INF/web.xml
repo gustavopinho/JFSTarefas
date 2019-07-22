@@ -11,7 +11,7 @@
     </filter>
     <filter-mapping>
         <filter-name>Autorizacao</filter-name>
-        <url-pattern>*/dashboard.xhtml</url-pattern>
+        <url-pattern>/dashboard.xhtml</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>

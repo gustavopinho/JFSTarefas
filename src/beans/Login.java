@@ -16,7 +16,7 @@ public class Login {
     
     private String usuario;
     private String senha;
-    private String mensagem;
+    private String mensagem = "Informe o usuÃ¡rio e a senha!";
     
     private static final String PERSISTENCE_UNIT_NAME = "tarefas";
     private static EntityManager entityManager;
@@ -52,7 +52,7 @@ public class Login {
         this.mensagem = mensagem;
     }
 
-    // Realiza o login do usuário no sistema e salva o usuário logado na sessão.
+    // Realiza o login do usuï¿½rio no sistema e salva o usuï¿½rio logado na sessï¿½o.
     public String fazerLogin()
     {
         this.entityUsuario = (Usuario) entityManager.createNamedQuery("Usuario.buscaPorUsuarioSenha")
@@ -67,12 +67,12 @@ public class Login {
             
             return "dashboard.xhtml?faces-redirect=true";
         } else {
-            this.setMensagem("Usuário ou senha incorretos!");
+            this.setMensagem("Usuï¿½rio ou senha incorretos!");
             return null;
         }
     }
 
-    // Faz logout do usuário e excluí do usuário da sessão.
+    // Faz logout do usuï¿½rio e excluï¿½ do usuï¿½rio da sessï¿½o.
     public String fazerLogout()
     {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
