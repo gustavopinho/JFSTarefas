@@ -12,101 +12,85 @@ import modelo.Usuario;
 @ManagedBean(name = "cadastro")
 @SessionScoped
 public class Cadastro {
-	
-	private String hello = "Hello World!";
-	private String title = "Title";
-	
-	private String mensagem = "Informe os dados do usuário";
-	private String confirmaSenha;
-	private Usuario usuario;
-	
-	private static final String PERSISTENCE_UNIT_NAME = "tarefas";
-	private static EntityManager entityManager;
-	private static EntityTransaction entityTransaction;
+    
+    private String mensagem = "Informe os dados do usuário";
+    private String confirmaSenha;
+    private Usuario usuario;
+    
+    private static final String PERSISTENCE_UNIT_NAME = "tarefas";
+    private static EntityManager entityManager;
+    private static EntityTransaction entityTransaction;
 
-	public Cadastro() {
-		this.usuario = new Usuario();
-		entityManager = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME).createEntityManager();
-		entityTransaction = entityManager.getTransaction();
-	}
+    public Cadastro() {
+        this.usuario = new Usuario();
+        entityManager = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME).createEntityManager();
+        entityTransaction = entityManager.getTransaction();
+    }
 
-	public String getHello() {
-		return hello;
-	}
+    public Usuario getUsuario() {
+        return usuario;
+    }
 
-	public void setHello(String hello) {
-		this.hello = hello;
-	}
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
+    public String getMensagem() {
+        return mensagem;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public String getConfirmaSenha() {
+        return confirmaSenha;
+    }
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
+    public void setConfirmaSenha(String confirmaSenha) {
+        this.confirmaSenha = confirmaSenha;
+    }
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-	
-	public String getMensagem() {
-		return mensagem;
-	}
+    // Método responsável pelo cadastro de novos usuários.
+    public String cadastrar()
+    {
+        // Verifica a validação
+        if(this.validaDados())
+        {
+            // Verifica se existe transação ativa, se não inicia.
+            if(!entityTransaction.isActive())
+            {
+                entityTransaction.begin();
+            }
 
-	public void setMensagem(String mensagem) {
-		this.mensagem = mensagem;
-	}
+            // Salva os dados do usuário cadastrado.
+            entityManager.persist(this.usuario);
 
-	public String getConfirmaSenha() {
-		return confirmaSenha;
-	}
+            // Faz o commit da transação
+            entityTransaction.commit();
+            
+            // Limpa o usuário.
+            this.usuario = new Usuario();
+            this.setMensagem("Usuário cadastrado com sucesso!");
+            
+            // Redireciona o usuário cadastrado para login.
+            return "login.xhtml?faces-redirect=true?faces-redirect=true";
+        }
 
-	public void setConfirmaSenha(String confirmaSenha) {
-		this.confirmaSenha = confirmaSenha;
-	}
-
-	/**
-	 * Faz o cadastro de novos usuários
-	 */
-	public String cadastrar()
-	{
-
-		if(this.validaDados())
-		{
-			if(!entityTransaction.isActive())
-			{
-				entityTransaction.begin();
-			}
-			
-			entityManager.persist(this.usuario);
-			entityTransaction.commit();
-			this.usuario = new Usuario();
-			this.setMensagem("Usuário cadastrado com sucesso!");
-			
-			return "login.xhtml?faces-redirect=true?faces-redirect=true";
-		}
-		
-		return null;
-	}
-	
-	/**
-	 * Valida os dados enviados pelo usuário para o cadastro
-	 * @return boolean
-	 */
-	public boolean validaDados()
-	{
-		if(this.usuario.getSenha() != this.getConfirmaSenha())
-		{
-			this.setMensagem("A senha e a confirmação não coincidem!");
-			return false;
-		}
-		
-		return true;
-	}
+        return null;
+    }
+    
+    // Método responsável pela validação dos dados enviados pelo usuário para o cadastro.
+    public boolean validaDados()
+    {
+        // Verifica se as senha informadas coincidem.
+        if(this.usuario.getSenha() != this.getConfirmaSenha())
+        {
+            this.setMensagem("A senha e a confirmação não coincidem!");
+            return false;
+        }
+        
+        return true;
+    }
 
 }

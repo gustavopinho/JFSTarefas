@@ -4,22 +4,22 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
 
-	<h:head>
-		<title>Cadastrar | Tarefas App</title>
-	</h:head>
-	<h:body>
-		<h1>#{login.mensagem}</h1>
-		<h:form  id="formLogin">
-			<h:outputLabel for="usuario">Usuário:</h:outputLabel>
-			<h:inputText id="usuario" value="#{login.usuario}" />
-			<br/>
-			<h:outputLabel for="senha">Senha:</h:outputLabel>
-			<h:inputSecret id="senha" value="#{login.senha}" maxlength="6" required="true" redisplay="true" ></h:inputSecret>
-			<br/>
-			<h:commandButton action="#{login.fazerLogin()}" value="Submit"></h:commandButton>
-		</h:form>
-		<h:form>
-         	<h:link value = "Cadastre-se" outcome = "/cadastro.xhtml" />
-      	</h:form>
-	</h:body>
+    <h:head>
+        <title>Cadastrar | Tarefas App</title>
+    </h:head>
+    <h:body>
+        <h1>#{login.mensagem}</h1>
+        <h:form  id="formLogin">
+            <h:outputLabel for="usuario">Usuário:</h:outputLabel>
+            <h:inputText id="usuario" value="#{login.usuario}" />
+            <br/>
+            <h:outputLabel for="senha">Senha:</h:outputLabel>
+            <h:inputSecret id="senha" value="#{login.senha}" maxlength="6" required="true" redisplay="true" ></h:inputSecret>
+            <br/>
+            <h:commandButton action="#{login.fazerLogin()}" value="Submit"></h:commandButton>
+        </h:form>
+        <h:form>
+            <h:link value = "Cadastre-se" outcome = "/cadastro.xhtml" />
+        </h:form>
+    </h:body>
 </html>
