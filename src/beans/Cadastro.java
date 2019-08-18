@@ -63,6 +63,7 @@ public class Cadastro {
                 entityTransaction.begin();
             }
 
+            System.out.println(this.usuario);
             // Salva os dados do usuário cadastrado.
             entityManager.persist(this.usuario);
 
@@ -84,9 +85,9 @@ public class Cadastro {
     public boolean validaDados()
     {
         // Verifica se as senha informadas coincidem.
-        if(this.usuario.getSenha() != this.getConfirmaSenha())
+        if(!this.usuario.getSenha().equals(this.getConfirmaSenha()))
         {
-            this.setMensagem("A senha e a confirma��o n�o coincidem!");
+            this.setMensagem("A senha e a confirmação não coincidem!");
             return false;
         }
         

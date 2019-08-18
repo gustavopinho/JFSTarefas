@@ -12,6 +12,8 @@ jaxws/jaxws-endpoint/src/main/webapp/WEB-INF/wsdl/
 .DS_Store
  
 *.class
+
+*_.java
  
 # Package Files #
 *.jar
